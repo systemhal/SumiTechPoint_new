@@ -2627,105 +2627,128 @@
 
                     <!-- PESTAÑA: SUMINISTROS (Slideshow de Imágenes) -->
                     <article id="suministros-sec" class="admin-section">
-                        <h2 class="slide-category-title" style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 300; color: #000; margin: 0 0 12px 0; letter-spacing: 0.5px; text-transform: uppercase;">SUMINISTROS</h2>
-                        
-                        <div class="suministros-slideshow">
-                            <!-- Main Row: Arrow + Image + Arrow -->
-                            <div class="slideshow-main-row">
-                                <button class="slideshow-arrow slideshow-arrow-prev" id="suministros-prev" title="Anterior">
-                                    <i class="fa-solid fa-chevron-left"></i>
+                        <div class="suministros-header-row">
+                            <h2 class="slide-category-title" style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 300; color: #000; margin: 0; letter-spacing: 0.5px; text-transform: uppercase;">SUMINISTROS</h2>
+                            <div class="suministros-toggle-group">
+                                <button class="suministros-toggle-btn active" data-view="canva">
+                                    <i class="fa-brands fa-canva"></i> Presentación Canva
                                 </button>
+                                <button class="suministros-toggle-btn" data-view="local">
+                                    <i class="fa-solid fa-images"></i> Galería Local
+                                </button>
+                            </div>
+                        </div>
 
-                                <!-- Slide Container -->
-                                <div class="slideshow-viewport">
-                                    <div class="slideshow-track" id="suministros-track">
-                                        <div class="slideshow-slide active" data-slide="0">
-                                            <img src="suministros/00_inicial.png" alt="Inicial" loading="lazy">
-                                        </div>
-                                        <div class="slideshow-slide" data-slide="1">
-                                            <img src="suministros/01_situacion_inicial.png" alt="Situación Inicial" loading="lazy">
-                                        </div>
-                                        <div class="slideshow-slide" data-slide="2">
-                                            <img src="suministros/02_descision1.png" alt="Decisión 1" loading="lazy">
-                                        </div>
-                                        <div class="slideshow-slide" data-slide="3">
-                                            <img src="suministros/03_descision2.png" alt="Decisión 2" loading="lazy">
-                                        </div>
-                                        <div class="slideshow-slide" data-slide="4">
-                                            <img src="suministros/04_descision3.png" alt="Decisión 3" loading="lazy">
-                                        </div>
-                                        <div class="slideshow-slide" data-slide="5">
-                                            <img src="suministros/05_descision4.png" alt="Decisión 4" loading="lazy">
-                                        </div>
-                                        <div class="slideshow-slide" data-slide="6">
-                                            <img src="suministros/06_descision5.png" alt="Decisión 5" loading="lazy">
-                                        </div>
-                                        <div class="slideshow-slide" data-slide="7">
-                                            <img src="suministros/07_resultados.png" alt="Resultados" loading="lazy">
-                                        </div>
-                                        <div class="slideshow-slide" data-slide="8">
-                                            <img src="suministros/08_conclusion.png" alt="Conclusión" loading="lazy">
+                        <!-- 1. Canva View Pane -->
+                        <div id="view-canva" class="suministros-view-pane active">
+                            <div class="canva-embed-container">
+                                <iframe src="https://www.canva.com/design/DAHNzsxTVdA/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen" loading="lazy"></iframe>
+                            </div>
+                            <div class="canva-embed-footer" style="margin-top: 12px; text-align: center; font-size: 0.85rem; color: var(--text-secondary);">
+                                <span>Presentación interactiva y animada. Para editar o ver de forma externa, puedes <a href="https://canva.link/1hrgz9795d3mqxj" target="_blank" rel="noopener noreferrer" style="color: #00c4cc; font-weight: 600; text-decoration: none;">abrir la presentación en Canva <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem; margin-left: 2px;"></i></a></span>
+                            </div>
+                        </div>
+
+                        <!-- 2. Local Gallery View Pane -->
+                        <div id="view-local" class="suministros-view-pane">
+                            <div class="suministros-slideshow">
+                                <!-- Main Row: Arrow + Image + Arrow -->
+                                <div class="slideshow-main-row">
+                                    <button class="slideshow-arrow slideshow-arrow-prev" id="suministros-prev" title="Anterior">
+                                        <i class="fa-solid fa-chevron-left"></i>
+                                    </button>
+
+                                    <!-- Slide Container -->
+                                    <div class="slideshow-viewport">
+                                        <div class="slideshow-track" id="suministros-track">
+                                            <div class="slideshow-slide active" data-slide="0">
+                                                <img src="suministros/00_inicial.png" alt="Inicial" loading="lazy">
+                                            </div>
+                                            <div class="slideshow-slide" data-slide="1">
+                                                <img src="suministros/01_situacion_inicial.png" alt="Situación Inicial" loading="lazy">
+                                            </div>
+                                            <div class="slideshow-slide" data-slide="2">
+                                                <img src="suministros/02_descision1.png" alt="Decisión 1" loading="lazy">
+                                            </div>
+                                            <div class="slideshow-slide" data-slide="3">
+                                                <img src="suministros/03_descision2.png" alt="Decisión 2" loading="lazy">
+                                            </div>
+                                            <div class="slideshow-slide" data-slide="4">
+                                                <img src="suministros/04_descision3.png" alt="Decisión 3" loading="lazy">
+                                            </div>
+                                            <div class="slideshow-slide" data-slide="5">
+                                                <img src="suministros/05_descision4.png" alt="Decisión 4" loading="lazy">
+                                            </div>
+                                            <div class="slideshow-slide" data-slide="6">
+                                                <img src="suministros/06_descision5.png" alt="Decisión 5" loading="lazy">
+                                            </div>
+                                            <div class="slideshow-slide" data-slide="7">
+                                                <img src="suministros/07_resultados.png" alt="Resultados" loading="lazy">
+                                            </div>
+                                            <div class="slideshow-slide" data-slide="8">
+                                                <img src="suministros/08_conclusion.png" alt="Conclusión" loading="lazy">
+                                            </div>
                                         </div>
                                     </div>
+
+                                    <button class="slideshow-arrow slideshow-arrow-next" id="suministros-next" title="Siguiente">
+                                        <i class="fa-solid fa-chevron-right"></i>
+                                    </button>
                                 </div>
 
-                                <button class="slideshow-arrow slideshow-arrow-next" id="suministros-next" title="Siguiente">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </button>
-                            </div>
-
-                            <!-- Controls Row: Counter + Fullscreen Button -->
-                            <div class="slideshow-controls-row">
-                                <div class="slideshow-counter">
-                                    <span id="suministros-current">1</span> / <span id="suministros-total">9</span>
+                                <!-- Controls Row: Counter + Fullscreen Button -->
+                                <div class="slideshow-controls-row">
+                                    <div class="slideshow-counter">
+                                        <span id="suministros-current">1</span> / <span id="suministros-total">9</span>
+                                    </div>
+                                    <button class="slideshow-fullscreen-btn" id="suministros-fullscreen" title="Presentar en pantalla completa">
+                                        <i class="fa-solid fa-expand"></i> Presentar
+                                    </button>
                                 </div>
-                                <button class="slideshow-fullscreen-btn" id="suministros-fullscreen" title="Presentar en pantalla completa">
-                                    <i class="fa-solid fa-expand"></i> Presentar
-                                </button>
-                            </div>
 
-                            <!-- Dot Indicators -->
-                            <div class="slideshow-dots" id="suministros-dots">
-                                <button class="slideshow-dot active" data-dot="0"></button>
-                                <button class="slideshow-dot" data-dot="1"></button>
-                                <button class="slideshow-dot" data-dot="2"></button>
-                                <button class="slideshow-dot" data-dot="3"></button>
-                                <button class="slideshow-dot" data-dot="4"></button>
-                                <button class="slideshow-dot" data-dot="5"></button>
-                                <button class="slideshow-dot" data-dot="6"></button>
-                                <button class="slideshow-dot" data-dot="7"></button>
-                                <button class="slideshow-dot" data-dot="8"></button>
-                            </div>
+                                <!-- Dot Indicators -->
+                                <div class="slideshow-dots" id="suministros-dots">
+                                    <button class="slideshow-dot active" data-dot="0"></button>
+                                    <button class="slideshow-dot" data-dot="1"></button>
+                                    <button class="slideshow-dot" data-dot="2"></button>
+                                    <button class="slideshow-dot" data-dot="3"></button>
+                                    <button class="slideshow-dot" data-dot="4"></button>
+                                    <button class="slideshow-dot" data-dot="5"></button>
+                                    <button class="slideshow-dot" data-dot="6"></button>
+                                    <button class="slideshow-dot" data-dot="7"></button>
+                                    <button class="slideshow-dot" data-dot="8"></button>
+                                </div>
 
-                            <!-- Thumbnail Strip -->
-                            <div class="slideshow-thumbnails" id="suministros-thumbs">
-                                <button class="slideshow-thumb active" data-thumb="0">
-                                    <img src="suministros/00_inicial.png" alt="Miniatura 1">
-                                </button>
-                                <button class="slideshow-thumb" data-thumb="1">
-                                    <img src="suministros/01_situacion_inicial.png" alt="Miniatura 2">
-                                </button>
-                                <button class="slideshow-thumb" data-thumb="2">
-                                    <img src="suministros/02_descision1.png" alt="Miniatura 3">
-                                </button>
-                                <button class="slideshow-thumb" data-thumb="3">
-                                    <img src="suministros/03_descision2.png" alt="Miniatura 4">
-                                </button>
-                                <button class="slideshow-thumb" data-thumb="4">
-                                    <img src="suministros/04_descision3.png" alt="Miniatura 5">
-                                </button>
-                                <button class="slideshow-thumb" data-thumb="5">
-                                    <img src="suministros/05_descision4.png" alt="Miniatura 6">
-                                </button>
-                                <button class="slideshow-thumb" data-thumb="6">
-                                    <img src="suministros/06_descision5.png" alt="Miniatura 7">
-                                </button>
-                                <button class="slideshow-thumb" data-thumb="7">
-                                    <img src="suministros/07_resultados.png" alt="Miniatura 8">
-                                </button>
-                                <button class="slideshow-thumb" data-thumb="8">
-                                    <img src="suministros/08_conclusion.png" alt="Miniatura 9">
-                                </button>
+                                <!-- Thumbnail Strip -->
+                                <div class="slideshow-thumbnails" id="suministros-thumbs">
+                                    <button class="slideshow-thumb active" data-thumb="0">
+                                        <img src="suministros/00_inicial.png" alt="Miniatura 1">
+                                    </button>
+                                    <button class="slideshow-thumb" data-thumb="1">
+                                        <img src="suministros/01_situacion_inicial.png" alt="Miniatura 2">
+                                    </button>
+                                    <button class="slideshow-thumb" data-thumb="2">
+                                        <img src="suministros/02_descision1.png" alt="Miniatura 3">
+                                    </button>
+                                    <button class="slideshow-thumb" data-thumb="3">
+                                        <img src="suministros/03_descision2.png" alt="Miniatura 4">
+                                    </button>
+                                    <button class="slideshow-thumb" data-thumb="4">
+                                        <img src="suministros/04_descision3.png" alt="Miniatura 5">
+                                    </button>
+                                    <button class="slideshow-thumb" data-thumb="5">
+                                        <img src="suministros/05_descision4.png" alt="Miniatura 6">
+                                    </button>
+                                    <button class="slideshow-thumb" data-thumb="6">
+                                        <img src="suministros/06_descision5.png" alt="Miniatura 7">
+                                    </button>
+                                    <button class="slideshow-thumb" data-thumb="7">
+                                        <img src="suministros/07_resultados.png" alt="Miniatura 8">
+                                    </button>
+                                    <button class="slideshow-thumb" data-thumb="8">
+                                        <img src="suministros/08_conclusion.png" alt="Miniatura 9">
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </article>
