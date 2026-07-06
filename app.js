@@ -384,7 +384,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td><span class="badge badge-green">Compra: ${cart[0].name}${cart.length > 1 ? ' + ' + (cart.length - 1) + ' p.' : ''}</span></td>
                 <td>${getFormattedDate()}</td>
             `;
-            tableBody.insertBefore(pRow, tableBody.firstChild);
+            if (tableBody) {
+                tableBody.insertBefore(pRow, tableBody.firstChild);
+            }
             
             // Highlight table row
             pRow.style.background = 'rgba(0, 230, 118, 0.1)';
@@ -509,7 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
        USER REGISTRATION & DATABASE
        ========================================== */
     const formRegister = document.getElementById('form-user-register');
-    const tableBody = document.getElementById('db-table-body');
+    const tableBody = document.getElementById('db-table-body') || document.getElementById('db-table-body-global');
     const maturityProgress = document.getElementById('maturity-progress');
 
     // Toggle Passwords visibility
@@ -559,7 +561,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <td><span class="badge-none" id="table-user-benefits">Ninguno</span></td>
             <td>${currentUser.date}</td>
         `;
-        tableBody.insertBefore(newRow, tableBody.firstChild);
+        if (tableBody) {
+            tableBody.insertBefore(newRow, tableBody.firstChild);
+        }
 
         newRow.style.background = 'rgba(0, 229, 255, 0.1)';
         setTimeout(() => {
@@ -569,10 +573,12 @@ document.addEventListener('DOMContentLoaded', () => {
         metrics.registered += 1;
         updateAdminMetrics();
 
-        maturityProgress.style.width = '75%';
-        maturityProgress.textContent = '75% (Fidelizado)';
-        maturityProgress.className = 'progress-bar-fill';
-        maturityProgress.style.boxShadow = '0 0 20px var(--purple-glow)';
+        if (maturityProgress) {
+            maturityProgress.style.width = '75%';
+            maturityProgress.textContent = '75% (Fidelizado)';
+            maturityProgress.className = 'progress-bar-fill';
+            maturityProgress.style.boxShadow = '0 0 20px var(--purple-glow)';
+        }
 
         showToast("🎉 Cuenta registrada correctamente en base de datos.", "green");
         navigatePhoneTo('screen-success');
@@ -821,7 +827,9 @@ document.addEventListener('DOMContentLoaded', () => {
             <td><span class="badge badge-green">Antivirus</span></td>
             <td>${getFormattedDate()}</td>
         `;
-        tableBody.insertBefore(friendRow, tableBody.firstChild);
+        if (tableBody) {
+            tableBody.insertBefore(friendRow, tableBody.firstChild);
+        }
 
         friendRow.style.background = 'rgba(138, 43, 226, 0.1)';
         setTimeout(() => {
@@ -847,12 +855,37 @@ document.addEventListener('DOMContentLoaded', () => {
        UTILITIES & HELPERS
        ========================================== */
     function updateAdminMetrics() {
-        document.getElementById('kpi-downloads').textContent = formatNum(metrics.downloads);
-        document.getElementById('kpi-registered').textContent = formatNum(metrics.registered);
-        document.getElementById('kpi-claimed').textContent = formatNum(metrics.claimed);
-        document.getElementById('kpi-chats').textContent = formatNum(metrics.chats);
-        document.getElementById('kpi-purchases').textContent = formatNum(metrics.purchases);
-        document.getElementById('kpi-referrals').textContent = formatNum(metrics.referrals);
+        // Safe updates for top-level admin KPIs if they exist
+        const kpiDownloads = document.getElementById('kpi-downloads');
+        const kpiRegistered = document.getElementById('kpi-registered');
+        const kpiClaimed = document.getElementById('kpi-claimed');
+        const kpiChats = document.getElementById('kpi-chats');
+        const kpiPurchases = document.getElementById('kpi-purchases');
+        const kpiReferrals = document.getElementById('kpi-referrals');
+
+        if (kpiDownloads) kpiDownloads.textContent = formatNum(metrics.downloads);
+        if (kpiRegistered) kpiRegistered.textContent = formatNum(metrics.registered);
+        if (kpiClaimed) kpiClaimed.textContent = formatNum(metrics.claimed);
+        if (kpiChats) kpiChats.textContent = formatNum(metrics.chats);
+        if (kpiPurchases) kpiPurchases.textContent = formatNum(metrics.purchases);
+        if (kpiReferrals) kpiReferrals.textContent = formatNum(metrics.referrals);
+
+        // Safe updates for projected simulation metrics if they exist in the dashboard
+        const simMetricRegistered = document.getElementById('sim-metric-registered');
+        const simMetricPurchases = document.getElementById('sim-metric-purchases');
+        const simMetricReferrals = document.getElementById('sim-metric-referrals');
+        const simMetricRevenue = document.getElementById('sim-metric-revenue');
+
+        if (simMetricRegistered) simMetricRegistered.textContent = formatNum(metrics.registered);
+        if (simMetricPurchases) simMetricPurchases.textContent = formatNum(metrics.purchases);
+        if (simMetricReferrals) simMetricReferrals.textContent = formatNum(metrics.referrals);
+        
+        if (simMetricRevenue) {
+            const simTicket = document.getElementById('sim-ticket');
+            const ticketVal = simTicket ? parseFloat(simTicket.value) : 120;
+            const revenue = metrics.purchases * ticketVal;
+            simMetricRevenue.textContent = `S/ ${formatNum(revenue.toFixed(2))}`;
+        }
     }
 
     function formatNum(num) {
@@ -1055,6 +1088,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
+    });
+
+    // Suministros View Toggle Logic (Canva vs Local Gallery)
+    const suppliesToggleBtns = document.querySelectorAll('.suministros-toggle-btn');
+    const suppliesViewPanes = document.querySelectorAll('.suministros-view-pane');
+
+    suppliesToggleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            suppliesToggleBtns.forEach(b => b.classList.remove('active'));
+            suppliesViewPanes.forEach(p => p.classList.remove('active'));
+
+            btn.classList.add('active');
+            const targetViewId = 'view-' + btn.getAttribute('data-view');
+            const targetPane = document.getElementById(targetViewId);
+            if (targetPane) {
+                targetPane.classList.add('active');
+            }
+        });
     });
 
 });
